@@ -61,9 +61,9 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getCpf() { return cpf; }
-    public void setCpf(String cpf) { this.cpf = cpf; }
-    if (this == o) return true;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
         return Objects.equals(id, usuario.id);
@@ -80,7 +80,6 @@ public class Usuario {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
                 '}';
     }
 }
