@@ -23,23 +23,18 @@ public class Usuario {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(length = 14)
-    private String cpf;
-
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String cpf) {
+    public Usuario(String nome, String email) {
         this.nome = nome;
         this.email = email;
-        this.cpf = cpf;
     }
 
-    public Usuario(Long id, String nome, String email, String cpf) {
+    public Usuario(Long id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.cpf = cpf;
     }
 
     public Long getId() {
@@ -68,10 +63,7 @@ public class Usuario {
 
     public String getCpf() { return cpf; }
     public void setCpf(String cpf) { this.cpf = cpf; }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
+    if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
         return Objects.equals(id, usuario.id);
