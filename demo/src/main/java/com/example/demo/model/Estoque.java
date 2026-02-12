@@ -23,15 +23,6 @@ public class Estoque {
     @Column(name = "quantidade_reservada")
     private Integer quantidadeReservada = 0;
 
-    @Column(name = "ultima_atualizacao")
-    private LocalDateTime ultimaAtualizacao;
-
-    @PrePersist
-    @PreUpdate
-    protected void onUpdate() {
-        ultimaAtualizacao = LocalDateTime.now();
-    }
-
     public Estoque() {
     }
 
@@ -74,10 +65,6 @@ public class Estoque {
 
     public void setQuantidadeReservada(Integer quantidadeReservada) {
         this.quantidadeReservada = quantidadeReservada;
-    }
-
-    public LocalDateTime getUltimaAtualizacao() {
-        return ultimaAtualizacao;
     }
 
     @Override

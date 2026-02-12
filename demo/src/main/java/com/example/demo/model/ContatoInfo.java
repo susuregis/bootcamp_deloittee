@@ -11,42 +11,29 @@ public class ContatoInfo {
     @Column(name = "telefone", length = 15)
     private String telefone;
 
-    @Column(name = "celular", length = 15)
-    private String celular;
-
-    @Column(name = "email_alternativo", length = 100)
+    @Column(name = "email", length = 100)
     private String emailAlternativo;
-
-    @Column(name = "whatsapp", length = 15)
-    private String whatsapp;
 
     public ContatoInfo() {
     }
 
-    public ContatoInfo(String telefone, String celular, String emailAlternativo) {
+    public ContatoInfo(String telefone, String emailAlternativo) {
         this.telefone = telefone;
-        this.celular = celular;
         this.emailAlternativo = emailAlternativo;
     }
 
     public boolean temContatoCompleto() {
-        return (telefone != null && !telefone.isEmpty()) ||
-                (celular != null && !celular.isEmpty());
+        return telefone != null && !telefone.isEmpty();
     }
 
     public String getContatoPrincipal() {
-        if (celular != null && !celular.isEmpty()) {
-            return celular;
-        }
         return telefone != null ? telefone : "Sem contato";
     }
 
     public int getTotalContatos() {
         int total = 0;
         if (telefone != null && !telefone.isEmpty()) total++;
-        if (celular != null && !celular.isEmpty()) total++;
         if (emailAlternativo != null && !emailAlternativo.isEmpty()) total++;
-        if (whatsapp != null && !whatsapp.isEmpty()) total++;
         return total;
     }
 
@@ -58,14 +45,6 @@ public class ContatoInfo {
         this.telefone = telefone;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
     public String getEmailAlternativo() {
         return emailAlternativo;
     }
@@ -74,33 +53,23 @@ public class ContatoInfo {
         this.emailAlternativo = emailAlternativo;
     }
 
-    public String getWhatsapp() {
-        return whatsapp;
-    }
-
-    public void setWhatsapp(String whatsapp) {
-        this.whatsapp = whatsapp;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContatoInfo that = (ContatoInfo) o;
-        return Objects.equals(telefone, that.telefone) &&
-                Objects.equals(celular, that.celular);
+        return Objects.equals(telefone, that.telefone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(telefone, celular);
+        return Objects.hash(telefone);
     }
 
     @Override
     public String toString() {
         return "ContatoInfo{" +
                 "telefone='" + telefone + '\'' +
-                ", celular='" + celular + '\'' +
                 ", totalContatos=" + getTotalContatos() +
                 '}';
     }

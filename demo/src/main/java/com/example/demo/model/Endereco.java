@@ -8,9 +8,6 @@ import java.util.Objects;
 @Embeddable
 public class Endereco {
 
-    @Column(length = 100)
-    private String logradouro;
-
     @Column(length = 10)
     private String numero;
 
@@ -32,8 +29,7 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String numero, String cidade, String estado, String cep) {
-        this.logradouro = logradouro;
+    public Endereco(String numero, String cidade, String estado, String cep) {
         this.numero = numero;
         this.cidade = cidade;
         this.estado = estado;
@@ -41,8 +37,7 @@ public class Endereco {
     }
 
     public String getEnderecoCompleto() {
-        return String.format("%s, %s - %s, %s/%s - CEP: %s",
-                logradouro != null ? logradouro : "",
+        return String.format("%s - %s, %s/%s - CEP: %s",
                 numero != null ? numero : "",
                 bairro != null ? bairro : "",
                 cidade != null ? cidade : "",
@@ -51,18 +46,9 @@ public class Endereco {
     }
 
     public boolean isCompleto() {
-        return logradouro != null && !logradouro.isEmpty()
-                && cidade != null && !cidade.isEmpty()
+        return cidade != null && !cidade.isEmpty()
                 && estado != null && !estado.isEmpty()
                 && cep != null && !cep.isEmpty();
-    }
-
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
     }
 
     public String getNumero() {
