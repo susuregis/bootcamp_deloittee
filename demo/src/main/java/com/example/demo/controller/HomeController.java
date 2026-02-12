@@ -13,17 +13,44 @@ public class HomeController {
     @GetMapping("/")
     public ResponseEntity<Map<String, Object>> home() {
         Map<String, Object> resposta = new HashMap<>();
-        resposta.put("mensagem", "API REST do Sistema de Usuários");
-        resposta.put("versao", "1.0.0");
+        resposta.put("mensagem", "API REST - Sistema de Estoque com POO");
+        resposta.put("versao", "2.0.0");
         resposta.put("status", "online");
+        resposta.put("descricao", "Sistema completo aplicando Herança, Polimorfismo, Encapsulamento e Abstração");
+        
         resposta.put("endpoints", Map.of(
-            "listar_usuarios", "GET /api/usuarios",
-            "criar_usuario", "POST /api/usuarios",
-            "buscar_por_id", "GET /api/usuarios/{id}",
-            "buscar_por_email", "GET /api/usuarios/email/{email}",
-            "atualizar_usuario", "PUT /api/usuarios/{id}",
-            "deletar_usuario", "DELETE /api/usuarios/{id}",
+            "fornecedores", Map.of(
+                "listar", "GET /api/fornecedores",
+                "criar", "POST /api/fornecedores",
+                "buscar", "GET /api/fornecedores/{id}"
+            ),
+            "pecas", Map.of(
+                "listar", "GET /api/pecas",
+                "criar", "POST /api/pecas",
+                "buscar_por_codigo", "GET /api/pecas/codigo/{codigo}"
+            ),
+            "estoque", Map.of(
+                "listar", "GET /api/estoque",
+                "adicionar", "POST /api/estoque/adicionar",
+                "remover", "POST /api/estoque/remover",
+                "criticos", "GET /api/estoque/criticos"
+            ),
+            "movimentacoes", "GET /api/movimentacoes",
+            "categorias", "GET /api/categorias",
             "console_h2", "GET /h2-console"
+        ));
+        
+        resposta.put("conceitos_poo", Map.of(
+            "heranca", "Pessoa -> Fornecedor/Funcionario | Produto -> Peca",
+            "polimorfismo", "Métodos abstratos getTipo(), calcularPrecoFinal(), validar()",
+            "encapsulamento", "Atributos privados com getters/setters, lógica protegida",
+            "abstracao", "Classes abstratas Pessoa e Produto",
+            "composicao", Map.of(
+                "fraca", "Peça tem Fornecedor (Agregação - pode existir separadamente)",
+                "forte_embeddable", "Pessoa TEM ContatoInfo e Endereco (@Embedded - parte integral)",
+                "forte_collection", "Pedido TEM ItemPedidos (@ElementCollection - não existe sem o Pedido)",
+                "caracteristica", "Relacionamento 'tem-um' onde componente não existe independentemente"
+            )
         ));
         
         return ResponseEntity.ok(resposta);
