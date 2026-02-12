@@ -25,12 +25,6 @@ public class Peca extends Produto {
     @Column(precision = 5, scale = 2)
     private BigDecimal peso;
 
-    @Column(length = 50)
-    private String localizacao;
-
-    @Column(name = "necessita_certificacao")
-    private Boolean necessitaCertificacao = false;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
@@ -93,22 +87,6 @@ public class Peca extends Produto {
 
     public void setPeso(BigDecimal peso) {
         this.peso = peso;
-    }
-
-    public String getLocalizacao() {
-        return localizacao;
-    }
-
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
-    }
-
-    public Boolean getNecessitaCertificacao() {
-        return necessitaCertificacao;
-    }
-
-    public void setNecessitaCertificacao(Boolean necessitaCertificacao) {
-        this.necessitaCertificacao = necessitaCertificacao;
     }
 
     public Fornecedor getFornecedor() {
