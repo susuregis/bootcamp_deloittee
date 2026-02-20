@@ -471,15 +471,15 @@ function mostrarMensagem(texto, tipo = 'info') {
         mensagem = document.getElementById('mensagem-cadastro');
     }
     
-    if (mensagem) {
-        // Adicionar ícone baseado no tipo
+        if (mensagem) {
+        // Adicionar texto indicador baseado no tipo (sem emojis)
         let icone = '';
         if (tipo === 'sucesso') {
-            icone = '✅ '; // check mark
+            icone = 'Sucesso: ';
         } else if (tipo === 'erro') {
-            icone = '❌ '; // cross mark
+            icone = 'Erro: ';
         } else if (tipo === 'info') {
-            icone = 'ℹ️ '; // info
+            icone = 'Info: ';
         }
         
         mensagem.innerHTML = icone + texto;

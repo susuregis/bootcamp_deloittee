@@ -11,7 +11,7 @@ public class ContatoInfo {
     @Column(name = "telefone", length = 15)
     private String telefone;
 
-    @Column(name = "email", length = 100)
+    @Column(name = "email_alternativo", length = 100)
     private String emailAlternativo;
 
     public ContatoInfo() {
