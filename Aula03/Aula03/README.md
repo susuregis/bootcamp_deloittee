@@ -3,6 +3,8 @@
 ## Visão geral
 Nesta aula foram abordados os conceitos fundamentais de Programação Orientada a Objetos (POO) em Java: classes, objetos, atributos, métodos, encapsulamento, herança, polimorfismo e abstração. O foco foi compreender como modelar domínio usando tipos, organizar comportamento em métodos e reutilizar código com hierarquias.
 
+Foram adicionadas múltiplas classes ao projeto com foco em POO, incluindo modelos de domínio (Categoria, Produto, Fornecedor, Funcionario, Estoque, Peca, Pedido, Movimentacao, Pessoa) que demonstram conceitos de encapsulamento, relacionamentos entre objetos, herança e composição.
+
 ## Objetivos de aprendizagem
 - Entender o que são classes e objetos e como representam entidades do domínio.
 - Aplicar encapsulamento para proteger estado interno de uma classe.

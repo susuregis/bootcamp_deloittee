@@ -1,197 +1,90 @@
 package com.example.demo;
 
-import com.example.demo.model.Usuario;
-import com.example.demo.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
-
+import com.example.demo.model.Categoria;
+import com.example.demo.service.CategoriaService;
 import java.util.List;
 import java.util.Scanner;
 
-@Component
-public class TerminalMain implements CommandLineRunner {
+public class TerminalMain {
 
-    @Autowired
-    private UsuarioService usuarioService;
+    private static final CategoriaService categoriaService = new CategoriaService();
 
-    @Autowired
-    private ApplicationContext context;
-
-    @Override
-    public void run(String... args) {
-        if (System.console() == null) {
-            System.out.println("Console não detectado; pulando menu interativo.");
-            return;
-        }
-
+    public static void main(String[] args) {
+        System.out.println("=== Sistema CRUD - Java Puro com Hibernate ===\n");
+        
         Scanner scanner = new Scanner(System.in);
-        int opcao = -1;
+        int opcao;
 
-        try {
-            do {
-                exibirMenu();
-                if (!scanner.hasNextInt()) {
-                    System.out.println("\nEntrada finalizada. Encerrando aplicação...");
-                    SpringApplication.exit(context, () -> 0);
-                    break;
-                }
-                opcao = scanner.nextInt();
-                scanner.nextLine(); // Limpar buffer
+        do {
+            exibirMenu();
+            opcao = scanner.nextInt();
+            scanner.nextLine();
 
-                switch (opcao) {
-                    case 1:
-                        salvarUsuario(scanner);
-                        break;
-                    case 2:
-                        listarUsuarios();
-                        break;
-                    case 3:
-                        buscarUsuario(scanner);
-                        break;
-                    case 4:
-                        atualizarUsuario(scanner);
-                        break;
-                    case 5:
-                        deletarUsuario(scanner);
-                        break;
-                    case 0:
-                        System.out.println("Encerrando aplicação...");
-                        SpringApplication.exit(context, () -> 0);
-                        break;
-                    default:
-                        System.out.println("Opção inválida!");
-                }
-            } while (opcao != 0);
-        } catch (java.util.NoSuchElementException e) {
-            System.out.println("\nEntrada encerrada (EOF). Encerrando aplicação...");
-            SpringApplication.exit(context, () -> 0);
-        } finally {
-            try { scanner.close(); } catch (IllegalStateException ignored) {}
-        }
+            switch (opcao) {
+                case 1 -> salvarCategoria(scanner);
+                case 2 -> listarCategorias();
+                case 3 -> buscarCategoriaPorId(scanner);
+                case 4 -> deletarCategoria(scanner);
+                case 0 -> System.out.println("Encerrando...");
+                default -> System.out.println("Opção inválida!");
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+        System.out.println("Aplicação finalizada.");
     }
 
-    private void exibirMenu() {
-        System.out.println("\n========== MENU USUÁRIOS ==========");
-        System.out.println("1 - Salvar novo usuário");
-        System.out.println("2 - Listar todos os usuários");
-        System.out.println("3 - Buscar usuário por ID");
-        System.out.println("4 - Atualizar usuário");
-        System.out.println("5 - Deletar usuário");
-        System.out.println("0 - Sair");
-        System.out.print("Escolha uma opção: ");
+    private static void exibirMenu() {
+        System.out.println("\n=== MENU ===");
+        System.out.println("1. Salvar Categoria");
+        System.out.println("2. Listar Categorias");
+        System.out.println("3. Buscar Categoria por ID");
+        System.out.println("4. Deletar Categoria");
+        System.out.println("0. Sair");
+        System.out.print("Escolha: ");
     }
 
-    private void salvarUsuario(Scanner scanner) {
-        System.out.println("\n=== CADASTRAR NOVO USUÁRIO ===");
-        System.out.print("Nome: ");
+    private static void salvarCategoria(Scanner scanner) {
+        System.out.print("Nome da categoria: ");
         String nome = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
+        System.out.print("Descrição: ");
+        String descricao = scanner.nextLine();
 
-        Usuario usuario = new Usuario(nome, email, null);
-        Usuario salvo = usuarioService.criarUsuario(usuario);
-        System.out.println("Usuário salvo com sucesso! ID: " + salvo.getId());
+        Categoria categoria = new Categoria(nome, descricao);
+        categoriaService.salvar(categoria);
+        System.out.println("✓ Categoria salva com sucesso!");
     }
 
-    private void listarUsuarios() {
-        System.out.println("\n=== LISTA DE USUÁRIOS ===");
-        List<Usuario> usuarios = usuarioService.listarTodos();
-        if (usuarios.isEmpty()) {
-            System.out.println("Nenhum usuário cadastrado.");
+    private static void listarCategorias() {
+        List<Categoria> categorias = categoriaService.listarTodas();
+        System.out.println("\n=== Categorias ===");
+        if (categorias.isEmpty()) {
+            System.out.println("Nenhuma categoria encontrada.");
         } else {
-            usuarios.forEach(u -> 
-                System.out.println("ID: " + u.getId() + " | Nome: " + u.getNome() + " | Email: " + u.getEmail())
+            categorias.forEach(c -> 
+                System.out.printf("ID: %d | Nome: %s | Descrição: %s%n", 
+                    c.getId(), c.getNome(), c.getDescricao())
             );
         }
     }
 
-    private void buscarUsuario(Scanner scanner) {
-        Long id = readLong(scanner, "\nDigite o ID do usuário: ");
-
-        try {
-            Usuario usuario = usuarioService.buscarPorId(id);
-            System.out.println("\n=== USUÁRIO ENCONTRADO ===");
-            System.out.println("ID: " + usuario.getId());
-            System.out.println("Nome: " + usuario.getNome());
-            System.out.println("Email: " + usuario.getEmail());
-        } catch (Exception e) {
-            System.out.println("Usuário não encontrado!");
-        }
-    }
-
-    private void atualizarUsuario(Scanner scanner) {
-        Long id = readLong(scanner, "\nDigite o ID do usuário para atualizar: ");
-
-        try {
-            Usuario usuario = usuarioService.buscarPorId(id);
-            System.out.println("Nome atual: " + usuario.getNome());
-            System.out.print("Novo nome (ENTER para manter): ");
-            String nome = scanner.nextLine();
-            if (!nome.isBlank()) {
-                usuario.setNome(nome);
-            }
-
-            System.out.println("Email atual: " + usuario.getEmail());
-            System.out.print("Novo email (ENTER para manter): ");
-            String email = scanner.nextLine();
-            if (!email.isBlank()) {
-                usuario.setEmail(email);
-            }
-
-            usuarioService.atualizarUsuario(id, usuario);
-            System.out.println("Usuário atualizado com sucesso!");
-        } catch (Exception e) {
-            System.out.println("Erro ao atualizar usuário: " + e.getMessage());
-        }
-    }
-
-    private void deletarUsuario(Scanner scanner) {
-        Long id = readLong(scanner, "\nDigite o ID do usuário para deletar: ");
-
-        try {
-            usuarioService.removerUsuario(id);
-            System.out.println("Usuário deletado com sucesso!");
-        } catch (Exception e) {
-            System.out.println("Erro ao deletar usuário: " + e.getMessage());
-        }
-    }
-
-    // ========= Helper methods for safe input =========
-    private String readLine(Scanner scanner, String prompt) {
-        if (prompt != null && !prompt.isEmpty()) System.out.print(prompt);
-        if (!scanner.hasNextLine()) throw new java.util.NoSuchElementException("EOF");
-        return scanner.nextLine();
-    }
-
-    private int readInt(Scanner scanner, String prompt) {
-        if (prompt != null && !prompt.isEmpty()) System.out.print(prompt);
-        if (!scanner.hasNextInt()) throw new java.util.NoSuchElementException("EOF");
-        int v = scanner.nextInt();
+    private static void buscarCategoriaPorId(Scanner scanner) {
+        System.out.print("ID da categoria: ");
+        Long id = scanner.nextLong();
         scanner.nextLine();
-        return v;
+
+        categoriaService.buscarPorId(id).ifPresentOrElse(
+            c -> System.out.printf("Categoria: %s - %s%n", c.getNome(), c.getDescricao()),
+            () -> System.out.println("Categoria não encontrada.")
+        );
     }
 
-    private Long readLong(Scanner scanner, String prompt) {
-        if (prompt != null && !prompt.isEmpty()) System.out.print(prompt);
-        if (!scanner.hasNextLong()) throw new java.util.NoSuchElementException("EOF");
-        long v = scanner.nextLong();
+    private static void deletarCategoria(Scanner scanner) {
+        System.out.print("ID da categoria para deletar: ");
+        Long id = scanner.nextLong();
         scanner.nextLine();
-        return Long.valueOf(v);
-    }
 
-    private Integer readInteger(Scanner scanner, String prompt) {
-        return Integer.valueOf(readInt(scanner, prompt));
-    }
-
-    private java.math.BigDecimal readBigDecimal(Scanner scanner, String prompt) {
-        if (prompt != null && !prompt.isEmpty()) System.out.print(prompt);
-        if (!scanner.hasNextBigDecimal()) throw new java.util.NoSuchElementException("EOF");
-        java.math.BigDecimal v = scanner.nextBigDecimal();
-        scanner.nextLine();
-        return v;
+        categoriaService.deletar(id);
+        System.out.println("✓ Categoria deletada!");
     }
 }

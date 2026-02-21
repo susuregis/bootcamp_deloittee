@@ -18,3 +18,6 @@ Este repositório contém material das aulas do bootcamp organizado por pastas p
   - Conteúdo: JPA e Hibernate — anotações de entidade, mapeamento objeto-relacional, relacionamentos e configuração (H2, Spring Boot).
   - Local: [Aula04/Aula04/README.md](Aula04/Aula04/README.md)
 
+- Aula05
+  - Conteúdo: Spring Boot e Boas Práticas — introdução ao Spring Boot, refatoração do projeto com DTOs, validações, documentação Swagger, perfis de ambiente, tratamento de exceções e melhores práticas de desenvolvimento.
+  - Local: [Aula05/demo/README.md](Aula05/demo/README.md)
