@@ -32,6 +32,11 @@ Este repositório contém material das aulas do bootcamp organizado por pastas p
   - Implementações: Spring Boot com aplicação dos princípios SOLID em camadas de serviço, repositórios e controladores. Padrões de Design e Clean Code.
   - Local: [Aula06/demo/README.md](Aula06/demo/README.md)
 
+- Aula07
+  - Conteúdo: Frontend com Bootstrap — desenvolvimento de interface web para consumir a API REST.
+  - Implementações: Dashboard e CRUDs completos de Produtos, Categorias, Fornecedores e Peças com HTML5, CSS3, JavaScript e Bootstrap 5. Integração com API via Fetch.
+  - Local: [Aula07/README.md](Aula07/README.md)
+
 ## Como executar a Aula06
 
 ### Pré-requisitos
