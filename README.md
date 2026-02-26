@@ -26,3 +26,52 @@ Este repositório contém material das aulas do bootcamp organizado por pastas p
   - Conteúdo: Spring Boot e Boas Práticas — introdução ao Spring Boot, Spring Data e melhores práticas utilizando o Spring.
   - Implementações: Spring Boot com Spring Data JPA, REST API, validação, perfis de ambiente (dev/prod/test) e Swagger.
   - Local: [Aula05/demo/README.md](Aula05/demo/README.md)
+
+- Aula06
+  - Conteúdo: SOLID — Princípios de Design (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion).
+  - Implementações: Spring Boot com aplicação dos princípios SOLID em camadas de serviço, repositórios e controladores. Padrões de Design e Clean Code.
+  - Local: [Aula06/demo/README.md](Aula06/demo/README.md)
+
+## Como executar a Aula06
+
+### Pré-requisitos
+- Java 21
+- Maven 3.9+
+
+### Passos para rodar
+
+1. Navegue até o diretório da Aula05:
+```bash
+cd Aula05/demo
+```
+
+2. Compile e execute o projeto:
+```bash
+mvn clean spring-boot:run
+```
+
+Ou, se preferir apenas compilar e depois rodar:
+```bash
+mvn clean package
+java -jar target/demo-0.0.1-SNAPSHOT.jar
+```
+
+3. A aplicação estará disponível em:
+   - **API**: `http://localhost:8080`
+   - **Swagger UI**: `http://localhost:8080/swagger-ui.html`
+   - **API Docs**: `http://localhost:8080/v3/api-docs`
+
+### Profiles de ambiente
+
+Para rodar com diferentes perfis:
+
+```bash
+# Desenvolvimento (padrão)
+mvn clean spring-boot:run
+
+# Produção
+mvn clean spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=prod"
+
+# Testes
+mvn clean spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test"
+```
