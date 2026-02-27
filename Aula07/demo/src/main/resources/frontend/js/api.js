@@ -1,5 +1,5 @@
-// API Configuration
-const API_BASE_URL = 'http://localhost:8080/api';
+// API Configuration - Usa URL relativa (mesmo servidor)
+const API_BASE_URL = `${window.location.origin}/api`;
 
 // Generic API Class
 class ApiService {
