@@ -28,7 +28,9 @@ public class CorsConfig {
         config.setAllowedOriginPatterns(Arrays.asList(
             "http://localhost:*",
             "http://127.0.0.1:*",
-            "file://*"
+            "file://*",
+            "https://*.azurestaticapps.net",
+            "https://*.azurewebsites.net"
         ));
         
         // Headers permitidos
