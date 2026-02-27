@@ -13,9 +13,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // Serve arquivos estáticos da pasta frontend
+        // Serve arquivos estáticos da pasta static
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/frontend/")
                 .addResourceLocations("classpath:/static/")
                 .addResourceLocations("classpath:/public/");
     }

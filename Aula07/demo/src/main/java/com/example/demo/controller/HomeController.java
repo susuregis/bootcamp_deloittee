@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/api")
     public ResponseEntity<Map<String, Object>> home() {
         Map<String, Object> resposta = new HashMap<>();
         resposta.put("mensagem", "API REST - Sistema de Estoque com POO");

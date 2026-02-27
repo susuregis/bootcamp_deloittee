@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FrontendController {
 
-    @GetMapping({"/", "/index.html"})
+    @GetMapping("/")
     public String index() {
-        return "forward:/index.html";
+        return "redirect:/index.html";
     }
 
     @GetMapping("/pages/**")
