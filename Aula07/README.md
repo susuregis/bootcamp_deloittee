@@ -1,35 +1,35 @@
-# 📘 Aula 07 - Frontend + Backend Integrado + Deploy Azure
+# Aula 07 - Frontend + Backend Integrado + Deploy Azure
 
-## 🎯 Visão Geral
+## Visão Geral
 
 Nesta aula o foco foi o desenvolvimento completo de uma aplicação **Full Stack** com:
-- ✅ **Backend Spring Boot** com API REST
-- ✅ **Frontend Bootstrap 5** integrado ao backend
-- ✅ **Deploy na Azure** (App Service Gratuito)
-- ✅ **Frontend e Backend na mesma URL**
+- **Backend Spring Boot** com API REST
+- **Frontend Bootstrap 5** integrado ao backend
+- **Deploy na Azure** (App Service Gratuito)
+- **Frontend e Backend na mesma URL**
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 ### Backend (Spring Boot + JPA)
-- ✅ API REST completa (Produtos, Categorias, Fornecedores, Peças)
-- ✅ Validação com Bean Validation
-- ✅ Relacionamentos JPA (OneToMany, ManyToOne)
-- ✅ Banco H2 (em arquivo para persistência)
-- ✅ Princípios SOLID aplicados
-- ✅ Swagger/OpenAPI documentação
-- ✅ Perfis de ambiente (dev, test, prod)
+- API REST completa (Produtos, Categorias, Fornecedores, Peças)
+- Validação com Bean Validation
+- Relacionamentos JPA (OneToMany, ManyToOne)
+- Banco H2 (em arquivo para persistência)
+- Princípios SOLID aplicados
+- Swagger/OpenAPI documentação
+- Perfis de ambiente (dev, test, prod)
 
 ### Frontend (HTML + CSS + JS + Bootstrap)
-- ✅ Dashboard com cards interativos
-- ✅ CRUD completo de Produtos
-- ✅ CRUD completo de Categorias
-- ✅ CRUD completo de Fornecedores
-- ✅ CRUD completo de Peças
-- ✅ Interface responsiva (Desktop, Tablet, Mobile)
-- ✅ Animações e feedback visual
-- ✅ Integração com API REST via Fetch
+- Dashboard com cards interativos
+- CRUD completo de Produtos
+- CRUD completo de Categorias
+- CRUD completo de Fornecedores
+- CRUD completo de Peças
+- Interface responsiva (Desktop, Tablet, Mobile)
+- Animações e feedback visual
+- Integração com API REST via Fetch
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Backend
 - **Java 21**
@@ -52,7 +52,7 @@ Nesta aula o foco foi o desenvolvimento completo de uma aplicação **Full Stack
 - **Azure CLI**
 - **Maven**
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 Aula07/demo/
@@ -84,13 +84,13 @@ Aula07/demo/
 └── DEPLOY_QUICKSTART.md             # Início rápido
 ```
 
-## 🚀 Como Executar Localmente
+## Como Executar Localmente
 
-### 1️⃣ Pré-requisitos
+### 1. Pré-requisitos
 - Java 21+
 - Maven 3.6+
 
-### 2️⃣ Clonar e Executar
+### 2. Clonar e Executar
 
 ```bash
 # Navegar até o projeto
@@ -106,16 +106,16 @@ mvn spring-boot:run
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-### 3️⃣ Acessar a Aplicação
+### 3. Acessar a Aplicação
 
 - **Frontend:** http://localhost:8080
 - **API REST:** http://localhost:8080/api/produtos
 - **Swagger:** http://localhost:8080/swagger-ui.html
 - **H2 Console:** http://localhost:8080/h2-console (apenas dev/test)
 
-## ☁️ Deploy na Azure (GRATUITO)
+## Deploy na Azure (GRATUITO)
 
-### ⚡ Opção 1: Script Automático
+### Opção 1: Script Automático
 
 **Windows (PowerShell):**
 ```powershell
@@ -130,7 +130,7 @@ chmod +x deploy-azure.sh
 ./deploy-azure.sh
 ```
 
-### 🔧 Opção 2: Comandos Manuais
+### Opção 2: Comandos Manuais
 
 ```bash
 # 1. Login
@@ -146,21 +146,21 @@ mvn clean package -DskipTests
 az webapp deploy --name bootcamp-java-app-2026 --resource-group bootcamp-rg --src-path target/demo-0.0.1-SNAPSHOT.jar --type jar
 ```
 
-### 🌐 Acessar na Azure
+### Acessar na Azure
 
 Após o deploy, acesse:
 ```
 https://bootcamp-java-app-2026.azurewebsites.net
 ```
 
-⚠️ **Nota:** O nome `bootcamp-java-app-2026` deve ser único. Se já existir, escolha outro!
+**Nota:** O nome `bootcamp-java-app-2026` deve ser único. Se já existir, escolha outro!
 
-## 📚 Documentação Completa
+## Documentação Completa
 
 - **[DEPLOY_AZURE.md](demo/DEPLOY_AZURE.md)** - Guia completo de deploy
 - **[DEPLOY_QUICKSTART.md](demo/DEPLOY_QUICKSTART.md)** - Início rápido
 
-## 🎨 Funcionalidades do Frontend
+## Funcionalidades do Frontend
 
 ### Dashboard (index.html)
 - Cards interativos com links
@@ -189,7 +189,7 @@ https://bootcamp-java-app-2026.azurewebsites.net
 - Preço formatado
 - Badges para relacionamentos
 
-## 🔌 API Endpoints
+## API Endpoints
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
@@ -205,7 +205,7 @@ https://bootcamp-java-app-2026.azurewebsites.net
 | GET | `/api/pecas` | Lista todas as peças |
 | POST | `/api/pecas` | Cria nova peça |
 
-## 🎯 Perfis de Ambiente
+## Perfis de Ambiente
 
 ### Development (dev)
 ```bash
@@ -230,7 +230,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 - Logs mínimos
 - Otimizado para performance
 
-## 🛠️ Build do Projeto
+## Build do Projeto
 
 ```bash
 # Compilar sem testes
@@ -246,21 +246,21 @@ mvn clean compile
 mvn clean
 ```
 
-## 📊 Tecnologias e Padrões Implementados
+## Tecnologias e Padrões Implementados
 
-- ✅ **REST API** com Spring Boot
-- ✅ **JPA/Hibernate** para persistência
-- ✅ **Bean Validation** para validações
-- ✅ **SOLID Principles** aplicados
-- ✅ **Repository Pattern**
-- ✅ **Service Layer Pattern**
-- ✅ **DTO Pattern** (opcional)
-- ✅ **Exception Handling** centralizado
-- ✅ **CORS** configurado
-- ✅ **Swagger/OpenAPI** documentação
-- ✅ **Frontend SPA** integrado
+- **REST API** com Spring Boot
+- **JPA/Hibernate** para persistência
+- **Bean Validation** para validações
+- **SOLID Principles** aplicados
+- **Repository Pattern**
+- **Service Layer Pattern**
+- **DTO Pattern** (opcional)
+- **Exception Handling** centralizado
+- **CORS** configurado
+- **Swagger/OpenAPI** documentação
+- **Frontend SPA** integrado
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Erro: Porta 8080 em uso
 ```bash
@@ -282,7 +282,7 @@ lsof -ti:8080 | xargs kill -9
 - Teste endpoints: `curl http://localhost:8080/api/produtos`
 - Verifique banco de dados: `http://localhost:8080/h2-console`
 
-## 💡 Próximos Passos
+## Próximos Passos
 
 - [ ] Implementar autenticação JWT
 - [ ] Adicionar testes unitários

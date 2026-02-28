@@ -3,13 +3,14 @@
 ## Índice
 
 1. [Visão Geral](#visão-geral)
-2. [Estrutura do Repositório](#estrutura-do-repositório)
-3. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-4. [Evolução do Projeto](#evolução-do-projeto)
-5. [Como Executar o Projeto Final](#como-executar-o-projeto-final)
-6. [Conteúdo das Aulas](#conteúdo-das-aulas)
-7. [Endpoints da API](#endpoints-da-api)
-8. [Perfis de Ambiente](#perfis-de-ambiente)
+2. [Aplicação na Azure](#aplicação-na-azure)
+3. [Estrutura do Repositório](#estrutura-do-repositório)
+4. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+5. [Evolução do Projeto](#evolução-do-projeto)
+6. [Como Executar o Projeto Final](#como-executar-o-projeto-final)
+7. [Conteúdo das Aulas](#conteúdo-das-aulas)
+8. [Endpoints da API](#endpoints-da-api)
+9. [Perfis de Ambiente](#perfis-de-ambiente)
 
 ---
 
@@ -29,6 +30,24 @@ O projeto foi desenvolvido ao longo de 7 aulas, evoluindo progressivamente de um
 - Perfis de ambiente (dev, test, prod)
 - Interface web responsiva com Bootstrap 5
 - Operações CRUD completas via frontend
+
+---
+
+## Aplicação na Azure
+
+A aplicação está hospedada na plataforma Azure e pode ser acessada através dos seguintes links:
+
+### Aplicação Web
+- **URL**: [https://bootcamp-java-bdgwamgafyd2d4e4.brazilsouth-01.azurewebsites.net/index.html](https://bootcamp-java-bdgwamgafyd2d4e4.brazilsouth-01.azurewebsites.net/index.html)
+
+### Documentação da API (Swagger)
+- **URL**: [https://bootcamp-java-bdgwamgafyd2d4e4.brazilsouth-01.azurewebsites.net/swagger-ui.html](https://bootcamp-java-bdgwamgafyd2d4e4.brazilsouth-01.azurewebsites.net/swagger-ui.html)
+
+### Console H2 Database
+- **URL**: [https://bootcamp-java-bdgwamgafyd2d4e4.brazilsouth-01.azurewebsites.net/h2-console](https://bootcamp-java-bdgwamgafyd2d4e4.brazilsouth-01.azurewebsites.net/h2-console)
+- **JDBC URL**: `jdbc:h2:file:./data/bootcamp`
+- **Username**: `sa`
+- **Password**: *(em branco)*
 
 ---
 
